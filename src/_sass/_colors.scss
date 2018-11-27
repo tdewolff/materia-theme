@@ -11,6 +11,10 @@ $google_red_color:    #EA4335;
   @return unquote("alpha(#{$c}, #{$a})");
 }
 
+@function chroma($c) {
+  @return mix($c, $grey_800, 75%);
+}
+
 // Foreground colors
 $dark_fg_color:  rgba(black, 0.87);
 $light_fg_color: white;
@@ -42,13 +46,13 @@ $inverse_fill_color:                  rgba(white, 0.04);
 
 // Background colors
 $bg_color:             if($variant == 'light', #F2F2F2, #282828);
-$base_color:           if($variant == 'light', #FFFFFF, #303030);
+$base_color:           if($variant == 'light', #FFFFFF, chroma($blue_grey_600));
 $alt_base_color:       if($variant == 'light', #FAFAFA, #2C2C2C);
 $popup_bg_color:       if($variant == 'light', #FFFFFF, #424242);
 $alt_lighter_bg_color: if($variant == 'light', #EEEEEE, #303030); // for gnome-shell sub menu
 $button_bg_color:      if($variant == 'light', #FAFAFA, #424242);
 
-$titlebar_bg_color: if($titlebar == 'dark', #383838, #E0E0E0);
+$titlebar_bg_color: if($titlebar == 'dark', #37474f, #E0E0E0);
 
 $panel_bg_color:         rgba(black, 0.6);
 $alt_panel_bg_color:     rgba(black, 0.3);
