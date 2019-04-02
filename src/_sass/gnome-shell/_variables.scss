@@ -1,53 +1,44 @@
-$asset_suffix: if($variant == 'dark', '-dark', '');
-$extra_background_clip: if($variant == 'light', padding-box, border-box);
-
-$panel-corner-radius: 0;
-
 // font families
 $font-family: "M+ 1c", Roboto, Cantarell, Sans-Serif;
-$large-font-family: Roboto, "M+ 1c", Cantarell, Sans-Serif;
+$font-family-large: Roboto, "M+ 1c", Cantarell, Sans-Serif;
 
 // font sizes
-$root-font-size: if($compact == 'false', 14px, 14px);
-$subheading-size: if($compact == 'false', 16px, 15px);
+$font-size: if($compact == 'false', 14px, 14px);
+$font-size-subheading: if($compact == 'false', 16px, 15px);
 
-// sizes
-$small_size: if($compact == 'false', 24px, 24px);
-$medium_size: if($compact == 'false', 36px, 32px);
-$large_size: if($compact == 'false', 48px, 40px);
-
-$container_padding: if($compact == 'false', 6px, 4px);
-
-$bar_size: 4px;
-$menuitem_size: if($compact == 'false', 32px, 28px);
-
-// radiuses
-$material_radius: 4px;
-$circular_radius: 9999px;
+// Override sizes
+$menuitem-size: if($compact == 'false', 32px, 28px);
 
 // durations
-$shorter_duration: 200ms / 2;
-$longer_duration: 300ms / 2;
-$ripple_duration: 500ms / 2;
+$duration-panel: 250ms;
 
-// timing functions
-$standard_curve: cubic-bezier(0.4, 0.0, 0.2, 1);
-$deceleration_curve: cubic-bezier(0.0, 0.0, 0.2, 1);
-$acceleration_curve: cubic-bezier(0.4, 0.0, 1, 1);
-$sharp_curve: cubic-bezier(0.4, 0.0, 0.6, 1);
-
-// transition shorthands
-$shorter_transition: all $shorter_duration $deceleration_curve;
-$longer_transition: all $longer_duration $deceleration_curve;
-$shadow_transition: box-shadow $shorter_duration $deceleration_curve;
+// Override durations; since St does not support transition-timing-function
+$duration: 100ms;
+$duration-ripple: 200ms;
 
 // shadows
-// based shadow values:
-// https://material-design.storage.googleapis.com/images/layout-principles-dimensionality-shadows-08_large_mdpi.png
 
-$shadow_0: 0 0 transparent;
-$shadow_1: 0 1px 1.5px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
-$shadow_2: 0 3px 3px rgba(0, 0, 0, 0.16 * 1.5), 0 3px 3px rgba(0, 0, 0, 0.23 * 1.5);
-$shadow_3: 0 10px 10px rgba(0, 0, 0, 0.19 * 1.5), 0 6px 3px rgba(0, 0, 0, 0.23 * 1.5);
-$shadow_4: 0 14px 14px rgba(0, 0, 0, 0.25 * 2), 0 10px 5px rgba(0, 0, 0, 0.22 * 2);
-$shadow_5: 0 19px 19px rgba(0, 0, 0, 0.30 * 2), 0 15px 6px rgba(0, 0, 0, 0.22 * 2);
+// This should be none, but it's creating some issues with borders, so to
+// workaround it for now, use inset wich goes through a different code path.
+// see https://bugzilla.gnome.org/show_bug.cgi?id=752934
+$shadow-0: 0 0 transparent;
+
+// Override shadows
+$shadow-1: 0 1px 1.5px rgba(black, 0.12), 0 1px 1px rgba(black, 0.24);
+$shadow-2: 0 3px 3px rgba(black, 0.16 * 1.5), 0 3px 3px rgba(black, 0.23 * 1.5);
+$shadow-3: 0 10px 10px rgba(black, 0.19 * 1.5), 0 6px 3px rgba(black, 0.23 * 1.5);
+$shadow-4: 0 14px 14px rgba(black, 0.25 * 2), 0 10px 5px rgba(black, 0.22 * 2);
+$shadow-5: 0 19px 19px rgba(black, 0.30 * 2), 0 15px 6px rgba(black, 0.22 * 2);
+
+// Override overlay colors; since St does not support alpha() function
+$overlay-hover:       rgba($text, 0.08);
+$overlay-focus:       rgba($text, 0.12);
+$overlay-focus-hover: rgba($text, 0.16);
+$overlay-active:      rgba($text, 0.08 + 0.12);
+$overlay-checked:     rgba($text, 0.24);
+
+$inverse-overlay-hover:       rgba(on(dark), 0.08);
+$inverse-overlay-focus:       rgba(on(dark), 0.12);
+$inverse-overlay-focus-hover: rgba(on(dark), 0.16);
+$inverse-overlay-active:      rgba(on(dark), 0.08 + 0.12);
+$inverse-overlay-checked:     rgba(on(dark), 0.24);

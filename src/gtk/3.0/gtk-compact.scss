@@ -1,8 +1,8 @@
 $variant: 'light';
-$titlebar: 'dark';
+$topbar: 'dark';
 $compact: 'true';
 
-@import '../../_sass/gtk/variables';
+@import '../../_sass/variables';
 @import '../../_sass/colors';
 @import '../../_sass/gtk/drawing-3.20';
 @import '../../_sass/gtk/common-3.20';

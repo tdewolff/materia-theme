@@ -1,15 +1,18 @@
+<img src="../images/materia-logo.svg" alt="materia-logo" align="right" />
+
 # Materia
+
+Materia is a [Material Design](https://material.io) theme for GNOME/GTK based desktop environments.
+
+It supports GTK 2, GTK 3, GNOME Shell, Budgie, Cinnamon, MATE, Unity, Xfce, LightDM, GDM, Chrome theme, etc.
+
+## Preview
 
 ![widget-factory](../images/widget-factory.png?raw=true)
 
-Materia (formerly Flat-Plat) is a [Material Design](https://material.io) theme for GNOME/GTK+ based desktop environments.  
-It supports GTK+ 3, GTK+ 2, GNOME Shell, Budgie, Cinnamon, MATE, Unity, LightDM, GDM, Chrome theme, etc.
-
-Also Materia can be customized with [oomox theme designer](https://github.com/themix-project/oomox).
-
 ## Features
 
-**Ripple effect** animations for GTK+ 3 are supported:
+**Ripple effect** animations for GTK 3 are supported:
 
 ![Button](../images/Button.gif?raw=true)
 
@@ -31,14 +34,15 @@ Also Materia can be customized with [oomox theme designer](https://github.com/th
 Various **desktop environments** are supported:
 
 - GNOME Shell `>=3.18`
-- Budgie `>=10.2.5`
+- Budgie `>=10.4`
 - Cinnamon `>=3.x`
 - MATE `>=1.14`
 - Unity `>=7.4`
+- Xfce `>=4.13`
 
 ## Requirements
 
-- GTK+ `>=3.20`
+- GTK `>=3.20`
 - `gnome-themes-extra` (or `gnome-themes-standard`)
 - Murrine engine — The package name depends on the distro.
   - `gtk-engine-murrine` on Arch Linux
@@ -57,16 +61,15 @@ Arch Linux | [`materia-gtk-theme`](https://www.archlinux.org/packages/community/
 Debian testing / unstable <br> Ubuntu 18.04+ | [`materia-gtk-theme`](https://packages.debian.org/unstable/materia-gtk-theme)
 Ubuntu 16.04 / 17.10 | `materia-gtk-theme` from [@igor-dyatlov's PPA](https://launchpad.net/~dyatlov-igor/+archive/ubuntu/materia-theme)
 Fedora | `materia-theme` from [@LaurentTreguier's Copr](https://copr.fedorainfracloud.org/coprs/tcg/themes)
+Solus | [`materia-gtk-theme`](https://dev.getsol.us/source/materia-gtk-theme/)
 
 ### Flatpak
 
-3 variants (Materia, Materia-dark, Materia-light) are available via Flathub:
+All 6 variants are available via Flathub:
 
 ```
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub org.gtk.Gtk3theme.Materia
-flatpak install flathub org.gtk.Gtk3theme.Materia-dark
-flatpak install flathub org.gtk.Gtk3theme.Materia-light
+flatpak install flathub org.gtk.Gtk3theme.Materia{,-dark,-light}{,-compact}
 ```
 
 ### Manual Installation
@@ -74,28 +77,28 @@ flatpak install flathub org.gtk.Gtk3theme.Materia-light
 Run the following commands in the terminal:
 
 ```sh
-cd /tmp && wget -qO - https://github.com/nana-4/materia-theme/archive/master.tar.gz | tar xz
-cd materia-theme-master
+git clone --depth 1 https://github.com/nana-4/materia-theme
+cd materia-theme
 sudo ./install.sh
 ```
 
 Tip: `./install.sh` allows the following options:
 
-Option | Description
---- | ---
-`-d`, `--dest` _DIR_ | Specify theme destination directory. (Default: `/usr/share/themes`)
-`-n`, `--name` _NAME_ | Specify theme name. (Default: `Materia`)
-`-c`, `--color` _VARIANT..._ | Specify theme color variant(s). (Default: All [`standard`\|`dark`\|`light`] variants)
-`-s`, `--size` _VARIANT_ | Specify theme size variant. (Default: All [`standard`\|`compact`] variants)
-`-g`, `--gdm` | Install and apply GDM theme.
-`-h`, `--help` | Show help.
+```
+-d, --dest DIR          Specify destination directory (Default: /usr/share/themes)
+-n, --name NAME         Specify theme name (Default: Materia)
+-c, --color VARIANT...  Specify color variant(s) [standard|dark|light] (Default: All variants)
+-s, --size VARIANT      Specify size variant [standard|compact] (Default: All variants)
+-g, --gdm               Install and apply GDM theme (for advanced users)
+-h, --help              Show help
+```
 
 ### Manual Uninstallation
 
 Delete the installed directories:
 
 ```sh
-sudo rm -rf /usr/share/themes/Materia{,-compact,-dark,-dark-compact,-light,-light-compact}
+sudo rm -rf /usr/share/themes/Materia{,-dark,-light}{,-compact}
 ```
 
 ## Recommendations
@@ -119,7 +122,9 @@ See [`gnome-shell/README.md`](src/gnome-shell/README.md) for details.
 
 ## Customization
 
-Materia allows you to change the color scheme relatively easily. See [`HACKING.md`](HACKING.md#how-to-change-the-color-scheme) for details.
+Materia can be customized with GUI application, [**oomox theme designer**](https://github.com/themix-project/oomox).
+
+Materia also allows you to change the color scheme relatively easily in other ways. See [`HACKING.md`](HACKING.md#how-to-change-the-color-scheme) for details.
 
 ## Contributing
 
@@ -130,7 +135,7 @@ Todo list can be found at [`TODO.md`](TODO.md).
 ## Related Projects
 
 - [**Materia KDE**](https://github.com/PapirusDevelopmentTeam/materia-kde) by @PapirusDevelopmentTeam
-- [**Materia VSCode Theme**](https://marketplace.visualstudio.com/items?itemName=m-thorsen.vscode-material-mt) by @m-thorsen
+- [**Materia VSCode Theme**](https://marketplace.visualstudio.com/items?itemName=m-thorsen.vscode-materia) by @m-thorsen
 - [**Materia Kolorizer**](https://github.com/DarthWound/materia-kolorizer) by @DarthWound
 
 ## License
