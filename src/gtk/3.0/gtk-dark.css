@@ -1616,7 +1616,7 @@ treeview.view {
 }
 
 treeview.view:selected {
-  background-color: #303030;
+  background-color: #50636c;
   background-image: image(rgba(66, 133, 244, 0.32));
 }
 
@@ -3868,7 +3868,7 @@ popover.emoji-completion .emoji:hover {
 .nautilus-window,
 .nautilus-window notebook,
 .nautilus-window notebook > stack {
-  background-color: #303030;
+  background-color: #50636c;
 }
 
 .nautilus-canvas-item.dim-label, label.nautilus-canvas-item.separator, .titlebar:not(headerbar) .nautilus-canvas-item.subtitle,
@@ -3985,7 +3985,7 @@ headerbar .nautilus-canvas-item.subtitle, .budgie-notification .nautilus-canvas-
 .search-information {
   padding: 2px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.26);
-  background-color: #303030;
+  background-color: #50636c;
   color: white;
 }
 
@@ -4927,7 +4927,7 @@ window.background:not(.csd) > widget > button > button {
 
 window.background:not(.csd) > widget > entry {
   min-height: 30px;
-  background-color: #303030;
+  background-color: #50636c;
 }
 
 window.background:not(.csd) > widget > entry:focus {
@@ -6038,7 +6038,7 @@ calendar.raven-calendar:selected {
  * Xfce4 Apps *
  **************/
 .XfceHeading {
-  background-color: #303030;
+  background-color: #50636c;
 }
 
 /***************

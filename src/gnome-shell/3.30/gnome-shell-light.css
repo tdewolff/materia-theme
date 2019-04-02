@@ -2929,7 +2929,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 #lockDialogGroup {
-  background: #303030;
+  background: #37474f;
   background-size: cover;
 }
 
