@@ -71,11 +71,11 @@ insensitive color on backdrop windows */
 
 /*
 widgets main borders color */
-@define-color borders #{"" + $border};
+@define-color borders #{"" + $divider};
 
 /*
 widgets main borders color on backdrop windows */
-@define-color unfocused_borders #{"" + $border};
+@define-color unfocused_borders #{"" + $divider};
 
 /*
 these are pretty self explicative */
@@ -91,6 +91,7 @@ read if you used those and something break with a version upgrade you're on your
 @define-color wm_unfocused_title #{"" + $titlebar-text-secondary};
 @define-color wm_highlight #{"" + highlight($titlebar)};
 @define-color wm_bg #{"" + $titlebar};
+@define-color wm_unfocused_bg #{"" + $titlebar-backdrop};
 
 /*
 FIXME this is really an API */

@@ -1737,6 +1737,7 @@ menubar,
   -GtkWidget-window-dragging: true;
   padding: 0;
   background-color: #E0E0E0;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 menubar > menuitem,
@@ -3532,9 +3533,10 @@ tooltip decoration {
   background-color: transparent;
 }
 
-tooltip label {
-  min-height: 20px;
-  padding: 0 2px;
+tooltip > box {
+  margin: -6px;
+  min-height: 24px;
+  padding: 4px 8px;
 }
 
 /*****************
@@ -4843,6 +4845,14 @@ button.image-button.session-new-button {
 
 .terminator-terminal-window notebook.frame {
   border-style: none;
+}
+
+/*************
+ * Ubitquity *
+ *************/
+#live_installer .menubar progressbar trough {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.12);
 }
 
 /***********
@@ -6180,8 +6190,7 @@ XfdesktopIconView.view .rubberband {
 }
 
 #content_frame {
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  padding-bottom: 16px;
 }
 
 #buttonbox_frame {
@@ -6190,10 +6199,6 @@ XfdesktopIconView.view .rubberband {
 
 #buttonbox_frame button {
   margin: -16px;
-}
-
-#greeter_infobar {
-  margin-top: -1px;
 }
 
 /********
