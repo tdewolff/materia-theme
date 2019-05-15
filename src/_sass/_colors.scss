@@ -55,19 +55,19 @@ $red:                                   #EA4335;
 $primary:                               $blue;
 $primary-alt:                           #7BAAF7;
 
-$background:                            if($variant == 'light', #F2F2F2, #282828);
-$surface:                               if($variant == 'light', #FFFFFF, #424242);
+$background:                            if($variant == 'light', #F2F2F2, $blue_grey_900);
+$surface:                               if($variant == 'light', #FFFFFF, $blue_grey_700);
 $base:                                  if($variant == 'light', #FFFFFF, chroma($blue_grey_600));
-$base-alt:                              if($variant == 'light', #FAFAFA, #2C2C2C);
+$base-alt:                              if($variant == 'light', #FAFAFA, chroma($blue_grey_800));
 
 $os-background:                         #37474f;
 $tooltip:                               rgba(#616161, 0.9);
 $scrim:                                 rgba(black, 0.6);
 $scrim-alt:                             rgba(black, 0.3);
 $scrim-inverse:                         rgba(white, 0.1);
-$titlebar:                              if($topbar == 'dark', #37474f, #E0E0E0);
-$panel:                                 if($topbar == 'dark', #212121, $scrim);
-$panel-solid:                           if($topbar == 'dark', #212121, #CBCBCB); // for Unity panel which doesn't allow translucent colors
+$titlebar:                              if($topbar == 'dark', $blue_grey_800, #E0E0E0);
+$panel:                                 if($topbar == 'dark', $blue_grey_900, $scrim);
+$panel-solid:                           if($topbar == 'dark', $blue_grey_900, #CBCBCB); // for Unity panel which doesn't allow translucent colors
 
 //
 // Misc colors
