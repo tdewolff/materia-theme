@@ -21,7 +21,7 @@
 
   @if ($brightness >= 128) {
     @if ($state == 'primary') { @return rgba(black, 0.87); }
-    @if ($state == 'secondary') { @return rgba(black, 0.54); }
+    @if ($state == 'secondary') { @return rgba(black, 0.6); }
     @if ($state == 'disabled') { @return rgba(black, 0.38); }
     @if ($state == 'secondary-disabled') { @return rgba(black, 0.26); }
     @if ($state == 'track') { @return rgba(black, 0.26); }
@@ -50,13 +50,8 @@
 // Basic colors
 //
 
-$blue:                                  #4285F4;
-$green:                                 #34A853;
-$yellow:                                #FBBC05;
-$red:                                   #EA4335;
-
-$primary-dark:                          $blue;
-$primary-light:                         #7BAAF7;
+$primary-dark:                          #1A73E8;
+$primary-light:                         #8AB4F8;
 $primary:                               if($variant == 'light', $primary-dark, $primary-light);
 
 $background:                            if($variant == 'light', #F2F2F2, $blue_grey_900);
@@ -79,13 +74,13 @@ $panel-solid:                           if($topbar == 'dark', $blue_grey_900, #C
 //
 
 $link:                                  $primary;
-$link-visited:                          $purple-a200;
+$link-visited:                          if($variant == 'light', $purple-500, $purple-200);
 
-$warning:                               $yellow;
-$error:                                 $red;
-$success:                               $green;
+$warning:                               if($variant == 'light', #F4B400, #FDD633);
+$error:                                 if($variant == 'light', #D93025, #F28B82);
+$success:                               if($variant == 'light', #0F9D58, #81C995);
 
-$suggested:                             $primary-dark;
+$suggested:                             $primary;
 $destructive:                           $error;
 
 $frame:                                 if($variant == 'light', rgba(black, 0.12), rgba(black, 0.26)); // instead of shadows
@@ -126,4 +121,4 @@ $titlebar-divider:                      on($titlebar, divider);
 $titlebar-fill:                         on($titlebar, fill);
 
 // workaround for GTK3 @placeholder_text_color which doesn't allow translucent colors
-$placeholder_text_color:                if($variant == 'light', $grey-600, mix($white, $base, percentage(0.7)));
+$placeholder_text_color:                if($variant == 'light', mix(black, $base, percentage(0.6)), mix(white, $base, percentage(0.7)));

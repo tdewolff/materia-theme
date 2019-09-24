@@ -11,7 +11,7 @@ COLOR_VARIANTS=('' '-dark' '-light')
 SIZE_VARIANTS=('' '-compact')
 
 GTK_VERSIONS=('3.0')
-GS_VERSIONS=('3.18' '3.24' '3.26' '3.28' '3.30' '3.32')
+GS_VERSIONS=('3.18' '3.24' '3.26' '3.28' '3.30' '3.32' '3.34')
 LATEST_GS_VERSION="${GS_VERSIONS[-1]}"
 
 # Set a proper gnome-shell theme version
@@ -146,6 +146,8 @@ install_gdm() {
   fi
 }
 
+colors=()
+sizes=()
 while [[ "$#" -gt 0 ]]; do
   case "${1:-}" in
     -d|--dest)
@@ -228,8 +230,14 @@ if [[ ! -w "${dest:-$DEST_DIR}" ]]; then
   exit 1
 fi
 
-for color in "${colors[@]:-${COLOR_VARIANTS[@]}}"; do
-  for size in "${sizes[@]:-${SIZE_VARIANTS[@]}}"; do
+if [[ "${#colors[@]}" -eq 0 ]] ; then
+  colors=("${COLOR_VARIANTS[@]}")
+fi
+if [[ "${#sizes[@]}" -eq 0 ]] ; then
+  sizes=("${SIZE_VARIANTS[@]}")
+fi
+for color in "${colors[@]}"; do
+  for size in "${sizes[@]}"; do
     install "${dest:-$DEST_DIR}" "${_name:-$THEME_NAME}" "$color" "$size"
   done
 done

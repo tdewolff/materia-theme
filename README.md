@@ -5,10 +5,13 @@ This is a slight modification on the [materia-theme from nana-4](https://github.
 Please refer to the upstream repository for more information.
 
 ## Usage
-
 To compile and install the Flat-Taco compact light theme, run
 
     ./run.sh
+
+To set the login screen, run
+
+    ./set-login-screen.sh
 
 To additionally install the fitting GNOME Terminal theme, run
 

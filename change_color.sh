@@ -19,11 +19,11 @@ is_dark() {
 
 
 print_usage() {
-  echo "usage: $0 [-o OUTPUT_THEME_NAME] [-p PATH_LIST] PATH_TO_PRESET"
+  echo "usage: $0 [-t TARGET_DIR] [-o OUTPUT_THEME_NAME] [-p PATH_LIST] PATH_TO_PRESET"
   echo "examples:"
   # shellcheck disable=SC2028 # This is meant to be usage text.
   echo "       $0 -o my-theme-name <(echo -e \"ROUNDNESS=0\\nBG=d8d8d8\\nFG=101010\\nHDR_BG=3c3c3c\\nHDR_FG=e6e6e6\\nSEL_BG=ad7fa8\\nMATERIA_VIEW=ffffff\\nMATERIA_SURFACE=f5f5f5\\nMATERIA_STYLE_COMPACT=True\\n\")"
-  echo "       $0 ../colors/retro/twg"
+  echo "       $0 -t ~/.themes ../colors/retro/twg"
   echo "       $0 --hidpi True ../colors/retro/clearlooks"
   exit 1
 }
@@ -33,6 +33,10 @@ while [[ "$#" -gt 0 ]]; do
   case "$1" in
     -p|--path-list)
       CUSTOM_PATHLIST="$2"
+      shift
+      ;;
+    -t|--target)
+      TARGET_DIR="$2"
       shift
       ;;
     -o|--output)
@@ -60,17 +64,17 @@ if [[ -z "${THEME:-}" ]]; then
 fi
 
 PATHLIST=(
+  './src/_sass/_colors.scss'
   './src/chrome'
   './src/cinnamon'
   './src/cinnamon/assets'
   './src/gnome-shell'
+  './src/gtk/assets.svg'
+  './src/gtk-2.0/assets.svg'
+  './src/gtk-2.0/assets-dark.svg'
   './src/gtk-2.0/gtkrc'
   './src/gtk-2.0/gtkrc-dark'
   './src/gtk-2.0/gtkrc-light'
-  './src/_sass/_colors.scss'
-  './src/gtk-2.0/assets.svg'
-  './src/gtk-2.0/assets-dark.svg'
-  './src/gtk/assets.svg'
   './src/metacity-1'
   './src/unity'
   './src/xfwm4'
@@ -134,9 +138,9 @@ TERMINAL_COLOR10=${TERMINAL_COLOR10:-00C853}
 TERMINAL_COLOR11=${TERMINAL_COLOR11:-FF6D00}
 TERMINAL_COLOR12=${TERMINAL_COLOR12:-66BB6A}
 
-
+TARGET_DIR=${TARGET_DIR-$HOME/.themes}
 OUTPUT_THEME_NAME=${OUTPUT_THEME_NAME-oomox-$THEME}
-DEST_PATH="$HOME/.themes/${OUTPUT_THEME_NAME/\//-}"
+DEST_PATH="$TARGET_DIR/${OUTPUT_THEME_NAME/\//-}"
 
 if [[ "$SRC_PATH" == "$DEST_PATH" ]]; then
   echo "can't do that"
@@ -175,39 +179,34 @@ for FILEPATH in "${PATHLIST[@]}"; do
     find "$FILEPATH" -type f -not -name '_color-palette.scss' -exec sed -i'' \
       -e '/color-surface/{n;s/#FFFFFF/%MATERIA_SURFACE%/g}' \
       -e '/color-base/{n;s/#FFFFFF/%MATERIA_VIEW%/g}' \
+      -e 's/#8AB4F8/%SEL_BG%/g' \
+      -e 's/#1A73E8/%SEL_BG%/g' \
       -e 's/#000000/%FG%/g' \
       -e 's/#212121/%FG%/g' \
-      -e 's/#757575/%INACTIVE_FG%/g' \
       -e 's/#BDBDBD/%INACTIVE_FG%/g' \
-      -e 's/#FAFAFA/%INACTIVE_MATERIA_VIEW%/g' \
+      -e 's/#616161/%INACTIVE_FG%/g' \
       -e 's/#F2F2F2/%BG%/g' \
-      -e 's/#4285F4/%SEL_BG%/g' \
+      -e 's/#FFFFFF/%MATERIA_SURFACE%/g' \
       -e 's/#FFFFFF/%MATERIA_VIEW%/g' \
-      -e 's/#383838/%HDR_BG%/g' \
+      -e 's/#FAFAFA/%INACTIVE_MATERIA_VIEW%/g' \
+      -e 's/#353535/%HDR_BG%/g' \
+      -e 's/#2C2C2C/%HDR_BG2%/g' \
       -e 's/#E0E0E0/%HDR_BG%/g' \
+      -e 's/#D6D6D6/%HDR_BG2%/g' \
       -e 's/Materia/%OUTPUT_THEME_NAME%/g' \
-      -e 's/#282828/%HDR_BG%/g' \
-      -e 's/#303030/%MATERIA_VIEW%/g' \
-      -e 's/#2C2C2C/%INACTIVE_MATERIA_VIEW%/g' \
-      -e 's/#424242/%MATERIA_SURFACE%/g' \
       {} \; ;
   else
     find "$FILEPATH" -type f -not -name '_color-palette.scss' -exec sed -i'' \
-      -e 's/#000000/%BG%/g' \
-      -e 's/#282828/%BG%/g' \
-      -e 's/#757575/%INACTIVE_FG%/g' \
-      -e 's/#BDBDBD/%INACTIVE_FG%/g' \
-      -e 's/#2C2C2C/%INACTIVE_MATERIA_VIEW%/g' \
+      -e 's/#1A73E8/%SEL_BG%/g' \
       -e 's/#FFFFFF/%FG%/g' \
-      -e 's/#FAFAFA/%FG%/g' \
-      -e 's/#424242/%MATERIA_SURFACE%/g' \
-      -e 's/#4285F4/%SEL_BG%/g' \
-      -e 's/#303030/%MATERIA_VIEW%/g' \
-      -e 's/#383838/%HDR_BG%/g' \
-      -e 's/#212121/%HDR_BG2%/g' \
+      -e 's/#BDBDBD/%INACTIVE_FG%/g' \
+      -e 's/#212121/%BG%/g' \
+      -e 's/#3C3C3C/%MATERIA_SURFACE%/g' \
+      -e 's/#2C2C2C/%MATERIA_VIEW%/g' \
+      -e 's/#2C2C2C/%INACTIVE_MATERIA_VIEW%/g' \
+      -e 's/#353535/%HDR_BG%/g' \
+      -e 's/#2C2C2C/%HDR_BG2%/g' \
       -e 's/Materia/%OUTPUT_THEME_NAME%/g' \
-      -e 's/#F2F2F2/%FG%/g' \
-      -e 's/#E0E0E0/%HDR_FG%/g' \
       {} \; ;
   fi
 done
@@ -296,7 +295,7 @@ fi
 echo "== Rendering GTK 3 assets..."
 ./render-assets.sh gtk
 
-./install.sh --dest "$HOME/.themes" --name "${OUTPUT_THEME_NAME/\//-}" --color "$COLOR_VARIANT" --size "$SIZE_VARIANT"
+./install.sh --dest "$TARGET_DIR" --name "${OUTPUT_THEME_NAME/\//-}" --color "$COLOR_VARIANT" --size "$SIZE_VARIANT"
 
 GENERATED_PATH="$DEST_PATH$(tr -d ',' <<< "$COLOR_VARIANTS")$(tr -d ',' <<< "$SIZE_VARIANTS")"
 if [[ "$GENERATED_PATH" != "$DEST_PATH" ]]; then
